@@ -11,7 +11,6 @@ description: >-
 metadata:
   short-description: Route work to the Obsidian knowledge base
 ---
-
 # Obsidian Knowledge Base Route
 
 Use this skill as the location and policy entry point for the user's Obsidian knowledge base.
@@ -27,7 +26,7 @@ the current project directory is the vault.
 ## Before Vault Work
 
 Before searching, interpreting, or changing vault content, read the vault root's
-`/mnt/d/notes/obsidian/AGENT.md`. It contains the vault-specific structure, conventions, and
+`/mnt/d/notes/obsidian/AGENTS.md`. It contains the vault-specific structure, conventions, and
 operating rules. If that file is missing or cannot be read, tell the user before making
 vault-specific assumptions or edits.
 
