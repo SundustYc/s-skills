@@ -1,4 +1,4 @@
 interface:
   display_name: "Knowledge Base Route"
   short_description: "Route work to the Obsidian knowledge base"
-  default_prompt: "Use $kb-route to locate the Obsidian vault, read its AGENT.md, and route related lookup or note-capture work correctly."
+  default_prompt: "Use $kb-route to locate the Obsidian vault, read its AGENTS.md, and route related lookup or note-capture work correctly."
