@@ -1,0 +1,4 @@
+interface:
+  display_name: "Kimi Code CLI"
+  short_description: "How other agents should invoke the Kimi Code CLI"
+  default_prompt: "Use $kimi-code to resolve the kimi binary from PATH and run the correct kimi command for this task."
