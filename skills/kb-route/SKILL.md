@@ -20,15 +20,15 @@ Use this skill as the location and policy entry point for the user's Obsidian kn
 - WSL path: `/mnt/d/notes/obsidian`
 - Windows path: `D:\Notes\obsidian`
 
-The WSL path is the canonical path for shell commands in this environment. Do not assume that
+Use whichever path is native to your execution environment (WSL agents use the WSL path,
+Windows-native agents use the Windows path). Both refer to the same vault. Do not assume that
 the current project directory is the vault.
 
 ## Before Vault Work
 
-Before searching, interpreting, or changing vault content, read the vault root's
-`/mnt/d/notes/obsidian/AGENTS.md`. It contains the vault-specific structure, conventions, and
-operating rules. If that file is missing or cannot be read, tell the user before making
-vault-specific assumptions or edits.
+Before searching, interpreting, or changing vault content, read `AGENTS.md` at the vault root.
+It contains the vault-specific structure, conventions, and operating rules. If that file is missing
+or cannot be read, tell the user before making vault-specific assumptions or edits.
 
 This check is especially relevant when:
 
@@ -49,8 +49,9 @@ Load and follow the relevant installed Obsidian skill in addition to this route 
 Use only the skills relevant to the requested artifact or operation; this skill does not replace
 their detailed format or tool instructions.
 
-If Obsidian is not running, do not treat the CLI as available. Read and search the vault on the
-WSL filesystem path, or ask the user to open Obsidian when a CLI-only operation is required.
+If Obsidian is not running, do not treat the CLI as available. Read and search the vault on its
+filesystem path (native to your environment), or ask the user to open Obsidian when a CLI-only
+operation is required.
 
 ## Reusable Knowledge and Writes
 

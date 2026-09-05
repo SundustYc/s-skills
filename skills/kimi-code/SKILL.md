@@ -4,7 +4,8 @@ description: >-
   Invoke the Kimi Code CLI (`kimi`) so another agent can start, resume, or
   script a Kimi coding session. Use when the user or agent needs to call Kimi
   Code, kimi-code, kimi CLI, Moonshot, k3, kimi-for-coding, `kimi -p`,
-  `kimi acp`, `kimi web`, or 调用/启动 kimi.
+  `kimi acp`, `kimi web`, or 调用/启动 kimi. On this machine kimi is
+  installed only in WSL; Windows-native agents must invoke it via wsl.exe.
 metadata:
   short-description: How other agents should invoke the Kimi Code CLI
 ---
@@ -14,6 +15,22 @@ Use this skill to call **Kimi Code** from a shell. The command is `kimi`.
 Do not hardcode a machine-specific absolute path.
 
 Official docs: https://moonshotai.github.io/kimi-code/
+
+## Deployment on this machine
+
+Kimi Code is installed **only in WSL** here; there is no Windows-side install.
+
+- **Already inside WSL**: call `kimi` directly as described below. Do NOT wrap it in `wsl.exe`.
+- **Windows-native agent** (e.g. Codex Desktop): invoke through a WSL login shell so
+  `~/.bashrc` puts `kimi` on PATH:
+
+  ```powershell
+  wsl -e bash -lc 'kimi -p "PROMPT"'
+  ```
+
+  `cd` to the project on the Windows side first — `wsl.exe` starts in the translated
+  `/mnt/...` directory, and `kimi -c` session lookup keys on that path. Use WSL-style
+  absolute paths (`/mnt/d/...`) inside prompts.
 
 ## Resolve the binary
 
@@ -35,14 +52,14 @@ kimi provider list   # providers and default model
 
 ## Which invocation to use
 
-| Situation | Command |
-|---|---|
-| Agent / script / no TTY | `kimi -p "..."` |
-| User is in an interactive terminal | `kimi` |
-| Continue last session in this cwd | `kimi -c` |
-| Resume a known session | `kimi -S <sessionId>` |
-| IDE ACP stdio | `kimi acp` |
-| Browser UI | `kimi web --no-open` |
+| Situation                          | Command                 |
+| ---------------------------------- | ----------------------- |
+| Agent / script / no TTY            | `kimi -p "..."`       |
+| User is in an interactive terminal | `kimi`                |
+| Continue last session in this cwd  | `kimi -c`             |
+| Resume a known session             | `kimi -S <sessionId>` |
+| IDE ACP stdio                      | `kimi acp`            |
+| Browser UI                         | `kimi web --no-open`  |
 
 Always `cd` to the target project first. The workspace is the current directory.
 
@@ -126,12 +143,12 @@ kimi migrate                   # from legacy kimi-cli
 
 Pass aliases with `-m`. Confirm with `kimi provider list`. Common managed aliases:
 
-| Alias | Notes |
-|---|---|
-| `kimi-code/k3` | default on a stock managed install |
-| `kimi-code/k3-256k` | K3, 256k context |
-| `kimi-code/kimi-for-coding` | K2.7 Coding |
-| `kimi-code/kimi-for-coding-highspeed` | K2.7 highspeed |
+| Alias                                   | Notes                              |
+| --------------------------------------- | ---------------------------------- |
+| `kimi-code/k3`                        | default on a stock managed install |
+| `kimi-code/k3-256k`                   | K3, 256k context                   |
+| `kimi-code/kimi-for-coding`           | K2.7 Coding                        |
+| `kimi-code/kimi-for-coding-highspeed` | K2.7 highspeed                     |
 
 Override per invocation; do not edit `config.toml` unless the user asks.
 
