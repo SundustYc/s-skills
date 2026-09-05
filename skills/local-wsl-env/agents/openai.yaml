@@ -1,0 +1,4 @@
+interface:
+  display_name: "Local WSL execution environment"
+  short_description: "WSL host environment; sudo via ssh-askpass"
+  default_prompt: "Use $local-wsl-env for this machine's sudo/ssh-askpass flow before running privileged commands."
