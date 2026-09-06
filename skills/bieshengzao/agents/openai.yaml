@@ -1,0 +1,4 @@
+interface:
+  display_name: "别生造 (bieshengzao)"
+  short_description: "揪出文档里的生造词，改回直写内容"
+  default_prompt: "Use $bieshengzao to find undefined coined terms, mismatched labels, misused terminology, unexpanded acronyms, and abstraction standing in for mechanism in this document, then rewrite them back to the content itself without adding facts."
